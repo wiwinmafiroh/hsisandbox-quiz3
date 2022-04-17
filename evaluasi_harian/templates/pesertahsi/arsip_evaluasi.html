@@ -1,0 +1,117 @@
+{% extends 'pesertahsi/base.html' %}
+
+{% load static %}
+
+{% block title %}Peserta HSI | Arsip{% endblock title %}
+
+{% block main-content %}
+<!-- CONTENT -->
+<div class="main-content">
+  <header>
+    <div class="header-title-wrapper">
+      <label for="menu-toggle">
+        <i class="las la-bars"></i>
+      </label>
+      <div class="header-title">
+        <h1>Arsip</h1>
+        <p>Halaman Seluruh Hasil Evaluasi Harian</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      {% for nilai in nilai_akhir %}
+      <div class="card-nilai-score">
+        <div class="">
+          {{ nip }}
+        </div>
+        <div class="nilai">
+          Nilai: {{ nilai.nilai_akhir }} ({{ predikat }})
+        </div>
+        <div class="score">
+          Total Skor: {{ total_skor_peserta }}/{{ total_skor_evaluasi }}
+        </div>
+      </div>
+      {% endfor %}
+      <div class="section-arsip">
+        {% for list_item in list_evaluasi %}
+        <div class="arsip">
+          <div class="card-arsip">
+            {% for list in list_item %}
+            <div class="card-header">
+              <div class="silsilah-title">
+                SI01.{{ list.lembar_evaluasi.kode_evaluasi }}
+              </div>
+              <div class="score">
+                Skor: {{ list.skor }}/4
+              </div>
+            </div>
+            {% endfor %}
+            <div class="card-body">
+              {% for list in list_item %}
+              <div class="evaluasi">
+                <div class="soal">
+                  <p>{{ forloop.counter }}. {{ list.bank_soal }} ...</p>
+                </div>
+                {% if list.is_true %}
+                <div class="jawaban">
+                  <p class="jawaban-benar">
+                    Jawaban Anda:
+                    {% if list.jawaban == 'A' %}
+                      A. {{ list.bank_soal.pilihan_a }} <i class="las la-check"></i>
+                    {% elif list.jawaban == 'B' %}
+                      B. {{ list.bank_soal.pilihan_b }} <i class="las la-check"></i>
+                    {% elif list.jawaban == 'C' %}
+                      C. {{ list.bank_soal.pilihan_c }} <i class="las la-check"></i>
+                    {% elif list.jawaban == 'D' %}
+                      D. {{ list.bank_soal.pilihan_d }} <i class="las la-check"></i>
+                    {% else %}
+                      - Tidak Ada Data -
+                    {% endif %}
+                  </p>
+                </div>
+                {% else %}
+                <div class="jawaban">
+                  <p class="jawaban-salah">
+                    Jawaban Anda:
+                    {% if list.jawaban == 'A' %}
+                      A. {{ list.bank_soal.pilihan_a }} <i class="las la-times"></i>
+                    {% elif list.jawaban == 'B' %}
+                      B. {{ list.bank_soal.pilihan_b }} <i class="las la-times"></i>
+                    {% elif list.jawaban == 'C' %}
+                      C. {{ list.bank_soal.pilihan_c }} <i class="las la-times"></i>
+                    {% elif list.jawaban == 'D' %}
+                      D. {{ list.bank_soal.pilihan_d }} <i class="las la-times"></i>
+                    {% else %}
+                      - Tidak Ada Data -
+                    {% endif %}
+                  </p>
+                  <p class="jawaban-benar">
+                    Jawaban Benar:
+                    {% if list.bank_soal.kunci_jawaban == 'A' %}
+                      A. {{ list.bank_soal.pilihan_a }} <i class="las la-check"></i>
+                    {% elif list.bank_soal.kunci_jawaban == 'B' %}
+                      B. {{ list.bank_soal.pilihan_b }} <i class="las la-check"></i>
+                    {% elif list.bank_soal.kunci_jawaban == 'C' %}
+                      C. {{ list.bank_soal.pilihan_c }} <i class="las la-check"></i>
+                    {% elif list.bank_soal.kunci_jawaban == 'D' %}
+                      D. {{ list.bank_soal.pilihan_d }} <i class="las la-check"></i>
+                    {% else %}
+                      - Tidak Ada Data -
+                    {% endif %}
+                  </p>
+                </div>
+                {% endif %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+</div>
+<!-- AKHIR CONTENT -->
+{% endblock main-content %}

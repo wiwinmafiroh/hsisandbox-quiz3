@@ -1,0 +1,65 @@
+{% extends 'adminhsi/base.html' %}
+
+{% load static %}
+
+{% block title %}Admin HSI | Edit Evaluasi{% endblock title %}
+
+{% block user_fullname %}{{ user.first_name}} {{ user.last_name }}{% endblock %}
+
+{% block main-content %}
+<!-- CONTENT -->
+<div class="main-content">
+  <header>
+    <div class="header-title-wrapper">
+      <label for="menu-toggle">
+        <i class="las la-bars"></i>
+      </label>
+      <div class="header-title">
+        <h1>Edit Evaluasi</h1>
+        <p>Halaman Edit Data Evaluasi Harian HSI</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      {% for message in messages %}
+      <script>alert('{{ message }}')</script>
+      {% endfor %}
+      <div class="card card-tambah">
+        <div class="title">Edit Evaluasi</div>
+        <form action="#" method="post">
+          {% csrf_token %}
+          <div class="form-items">
+            <div class="data-eval">
+              <div class="eval">
+                <label for="kode_evaluasi" class="label-title">Kode Evaluasi</label>
+                <input type="text" name="kode_evaluasi" id="kode_evaluasi" readonly placeholder="{{ lembar_evaluasi.kode_evaluasi }}" value="{{ lembar_evaluasi.kode_evaluasi }}">
+              </div>
+              <div class="eval">
+                <label for="nama_evaluasi" class="label-title">Nama Evaluasi</label>
+                <input type="text" name="nama_evaluasi" id="nama_evaluasi" placeholder="Masukkan Nama Evaluasi" required value="{{ lembar_evaluasi.nama_evaluasi }}">
+              </div>
+              <div class="eval">
+                <label class="label-title">Status Evaluasi</label>
+                <select name="status" id="status" required>
+                  <option selected disabled>-Pilih Status Evaluasi-</option>
+                  <option value="Aktif" {% if lembar_evaluasi.status == 'Aktif' %}selected{% endif %}>Aktif</option>
+                  <option value="Tidak Aktif" {% if lembar_evaluasi.status == 'Tidak Aktif' %}selected{% endif %}>Tidak Aktif</option>
+                  <option value="Selesai" {% if lembar_evaluasi.status == 'Selesai' %}selected{% endif %}>Selesai</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-buttons">
+            <button type="submit" class="button-edit">Edit Evaluasi</button>
+            <a class="button-kembali" href="{% url 'lembar_evaluasi' %}">Kembali</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+<!-- AKHIR CONTENT -->
+{% endblock main-content %}

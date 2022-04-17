@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="icon" href="{% static 'adminhsi/img/sidebar/logoHSI.png' %}" />
+    <!-- Icons8 -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'adminhsi/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'adminhsi/css/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'adminhsi/css/add_evaluasi.css' %}" />
+    <link rel="stylesheet" href="{% static 'adminhsi/css/pilih_evaluasi.css' %}" />
+    <link rel="stylesheet" href="{% static 'adminhsi/css/edit_evaluasi.css' %}" />
+    <link rel="stylesheet" href="{% static 'adminhsi/css/soal_evaluasi.css' %}" />
+    <link rel="stylesheet" href="{% static 'adminhsi/css/add_soal.css' %}" />
+    <link rel="stylesheet" href="{% static 'adminhsi/css/edit_soal.css' %}" />
+    <link rel="stylesheet" href="{% static 'adminhsi/css/nilai_peserta.css' %}" />
+  </head>
+  <body>
+    <input type="checkbox" name="" id="menu-toggle" />
+    <div class="overlay">
+      <label for="menu-toggle"></label>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-container">
+        <div class="sidebar-logo">
+          <img src="{% static 'adminhsi/img/sidebar/logoHSI.png' %}" alt="" />
+        </div>
+
+        <div class="sidebar-avatar">
+          <div class="avatar-img">
+            <img
+              src="{% static 'adminhsi/img/sidebar/ava.png' %}"
+              alt="Photo Profile"
+              srcset=""
+            />
+          </div>
+          <div class="avatar-info">
+            <div class="avatar-text">
+              <h4 style="text-transform: uppercase;">{% block user_fullname %}{% endblock user_fullname %}</h4>
+              <small>Admin HSI (ART221-128372)</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-menu">
+          <ul>
+            <li>
+              <a href="{% url 'adminhsi' %}">
+                <i class="las la-tachometer-alt"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'lembar_evaluasi' %}">
+                <i class="las la-file-alt"></i>
+                <span>Data Lembar Evaluasi</span>
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'pilih_evaluasi' %}">
+                <i class="las la-question-circle"></i>
+                <span>Soal Evaluasi Harian</span>
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'nilai_peserta' %}">
+                <i class="las la-list-ol"></i>
+                <span>Nilai Peserta</span>
+              </a>
+            </li>
+            <li class="utama">
+              <a href="{% url 'logout' %}">
+                <i class="las la-sign-out-alt"></i>
+                <span>Keluar</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-icon">
+            <i class="las la-quote-right"></i>
+          </div>
+          <div class="sidebar-card-text">
+            <p>
+              "Siapa yang menempuh jalan untuk mencari ilmu, maka Allah akan
+              mudahkan baginya jalan menuju surga."
+            </p>
+            <h4>(HR. Muslim, no. 2699)</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- AKHIR SIDEBAR -->
+    {% block main-content %}{% endblock main-content %}
+  </body>
+</html>

@@ -1,0 +1,83 @@
+.section-arsip {
+  background: transparent;
+  height: 64vh;
+  overflow: scroll;
+}
+
+.arsip {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.card-arsip .card-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  color: #1d4acd;
+  font-weight: 600;
+  background-color: rgb(221, 221, 221, 0.4);
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(128, 148, 184, 0.2);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-arsip .card-header:first-child {
+  display: none;
+}
+
+.card-arsip .card-body {
+  padding: 0.8rem 1.5rem;
+  background-color: #fff;
+  color: var(--main-text);
+  border: 1px solid rgba(128, 148, 184, 0.2);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-weight: 500;
+}
+
+.card-arsip .card-body .evaluasi:first-child {
+  margin-bottom: 1rem;
+}
+
+.card-body .evaluasi .jawaban {
+  margin-left: 0.9rem;
+}
+
+.card-body .evaluasi .jawaban-benar {
+  color: #2fd173;
+}
+
+.card-body .evaluasi .jawaban-salah {
+  color: red;
+}
+
+.card-body .evaluasi .jawaban-benar i,
+.card-body .evaluasi .jawaban-salah i {
+  margin-left: 0.2rem;
+  font-size: 1.5rem;
+}
+
+.card-nilai-score {
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  padding: 0.6rem 1.5rem;
+  margin-bottom: 1rem;
+  background: #fff;
+  border: 2px solid #2495db;
+  border-radius: 50px;
+  color: #2495db;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 500px) {
+  .card-nilai-score {
+    font-size: .9rem;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: .3rem 1rem;
+  }
+}

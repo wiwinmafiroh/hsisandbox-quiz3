@@ -1,0 +1,158 @@
+.card-edit {
+  padding: 1rem 1.8rem;
+}
+
+.card .title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--title-text);
+  position: relative;
+}
+
+.card .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0.2rem;
+  width: 2rem;
+  background: linear-gradient(135deg, #2f5eeb, #93b5f0);
+}
+
+.form-items .question {
+  display: flex;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  justify-content: center;
+}
+
+.form-items .question .label-title {
+  flex-basis: 130px;
+}
+
+.form-items .question textarea {
+  margin-top: 0.4rem;
+  margin-bottom: 0.7rem;
+  width: 100%;
+  height: 80px;
+}
+
+.form-items .question textarea,
+.form-items .option input {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  padding-left: 0.6rem;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.form-items .question textarea:focus,
+.form-items .question textarea:valid,
+.form-items .option input:focus,
+.form-items .option input:valid {
+  border-color: rgba(29, 63, 165, 0.8);
+}
+
+.form-items .options {
+  margin: 0.3rem 0;
+}
+
+.form-items .option {
+  display: flex;
+}
+
+.form-items .option .label-title {
+  font-weight: 600;
+  margin-right: 2.6rem;
+  flex-basis: 82px;
+}
+
+.option input:nth-child(2) {
+  width: 100%;
+  height: 2.3rem;
+  margin-bottom: 1rem;
+}
+
+.form-items .answer-key {
+  display: flex;
+}
+
+.form-items .answer-key .label-title {
+  font-weight: 600;
+  flex-basis: 145px;
+}
+
+.answer-key .key label {
+  margin-right: 2rem;
+}
+
+.form-buttons.edit {
+  display: flex;
+  justify-content: right;
+  height: 45px;
+  margin-top: 1.1rem;
+}
+
+.form-buttons .button-edit,
+.form-buttons .button-kembali {
+  height: 40px;
+  width: 130px;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+
+.form-buttons .button-edit {
+  border: 1px solid var(--btn-edit);
+  background: var(--btn-edit);
+  color: #2495db;
+  margin-right: 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+.form-buttons a {
+  background-color: #fff;
+  color: #2495db;
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid #2495db;
+}
+
+@media screen and (max-width: 1280px) {
+  .form-items .question .label-title {
+    flex-basis: 150px;
+  }
+
+  .form-items .option .label-title {
+    flex-basis: 100px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form-items .question {
+    display: block;
+  }
+
+  .form-items .option {
+    display: block;
+  }
+
+  .form-items .answer-key {
+    display: block;
+  }
+
+  .form-buttons,
+  .form-buttons.edit {
+    justify-content: center;
+  }
+
+  .answer-key .key {
+    display: grid;
+  }
+}

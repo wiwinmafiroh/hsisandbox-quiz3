@@ -1,0 +1,73 @@
+{% extends 'adminhsi/base.html' %}
+
+{% load static %}
+
+{% block title %}Admin HSI | Lembar Evaluasi Harian{% endblock title %}
+
+{% block user_fullname %}{{ user.first_name}} {{ user.last_name }}{% endblock %}
+
+{% block main-content %}
+<!-- CONTENT -->
+<div class="main-content">
+  <header>
+    <div class="header-title-wrapper">
+      <label for="menu-toggle">
+        <i class="las la-bars"></i>
+      </label>
+      <div class="header-title">
+        <h1>Data Lembar Evaluasi Harian</h1>
+        <p>Halaman Manajemen Lembar Evaluasi Harian</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    {% for message in messages %}
+    <script>alert('{{ message }}')</script>
+    {% endfor %}
+    <section>
+      <div class="card card-soal">
+        <a href="{% url 'add_evaluasi' %}" class="tambah">
+          <i class="las la-plus"></i>
+          Tambah Evaluasi
+        </a>
+        <table id="table" class="lembar-evaluasi">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th width="18%">Kode Evaluasi</th>
+              <th width="50%">Nama Evaluasi</th>
+              <th width="18%">Status Evaluasi</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for evaluasi in lembar_evaluasi %}
+            <tr>
+              <td data-label="No">{{ forloop.counter }}</td>
+              <td align="center" data-label="Kode Evaluasi">{{ evaluasi.kode_evaluasi }}</td>
+              <td data-label="Nama Evaluasi">{{ evaluasi.nama_evaluasi }}</td>
+              {% if evaluasi.status == 'Aktif' %}
+              <td align="center" style="font-weight: bold; color: blue;" data-label="Status">Aktif</td>
+              {% elif evaluasi.status == 'Tidak Aktif' %}
+              <td align="center" style="font-weight: bold; color: grey" data-label="Status">Tidak Aktif</td>
+              {% else %}
+              <td align="center" style="font-weight: bold; color: green;" data-label="Status">Selesai</td>
+              {% endif %}
+              <td data-label="Aksi">
+                <div class="table-btn">
+                  <a href="{% url 'edit_evaluasi' evaluasi.id %}" class="edit">
+                    <i class="las la-edit"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+<!-- AKHIR CONTENT -->
+{% endblock main-content %}

@@ -1,0 +1,60 @@
+{% extends 'pesertahsi/base.html' %}
+
+{% load static %}
+
+{% block title %}Admin HSI | Peringkat{% endblock title %}
+
+{% block user_fullname %}{{ user.first_name}} {{ user.last_name }}{% endblock %}
+
+{% block main-content %}
+<!-- CONTENT -->
+<div class="main-content">
+  <header>
+    <div class="header-title-wrapper">
+      <label for="menu-toggle">
+        <i class="las la-bars"></i>
+      </label>
+      <div class="header-title">
+        <h1>Peringkat</h1>
+        <p>Halaman Peringkat Peserta</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="card card-soal">
+        <table class="peringkat">
+          <thead>
+            <tr>
+              <th width="15%">Peringkat</th>
+              <th width="25%">NIP</th>
+              <th width="25%">Nama Peserta</th>
+              <th width="15%">Nilai</th>
+              <th>Predikat</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for nilai in nilai_peserta %}
+            <tr>
+              <td data-label="Peringkat">{{ forloop.counter }}</td>
+              <td data-label="NIP">
+                {{ nilai.peserta.nip }}
+              </td>
+              <td data-label="Nama Peserta">
+                {{ nilai.peserta.nama_lengkap }}
+              </td>
+              <td data-label="Nilai">{{ nilai.nilai_akhir }}</td>
+              <td data-label="Predikat">
+                {{ nilai.predikat }}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+<!-- AKHIR CONTENT -->
+{% endblock main-content %}

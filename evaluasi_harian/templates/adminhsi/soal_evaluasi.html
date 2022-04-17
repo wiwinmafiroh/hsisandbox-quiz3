@@ -1,0 +1,106 @@
+{% extends 'adminhsi/base.html' %}
+
+{% load static %}
+
+{% block title %}Admin HSI | Soal Evaluasi Harian{% endblock title %}
+
+{% block user_fullname %}{{ user.first_name}} {{ user.last_name }}{% endblock %}
+
+{% block main-content %}
+<!-- CONTENT -->
+<div class="main-content">
+  <header>
+    <div class="header-title-wrapper">
+      <label for="menu-toggle">
+        <i class="las la-bars"></i>
+      </label>
+      <div class="header-title">
+        <h1>Soal {{ kode_evaluasi }}</h1>
+        <p>Halaman Manajemen Soal Evaluasi Harian HSI</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      {% for message in messages %}
+      <script>alert('{{ message }}')</script>
+      {% endfor %}
+      <div class="card card-soal">
+        <div class="group-button">
+          <a href="{% url 'add_soal' id %}" class="tambah">
+            <i class="las la-plus"></i>
+            Tambah Soal
+          </a>
+          <a class="button-kembali" href="{% url 'pilih_evaluasi' %}">Kembali</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th width="3%">No</th>
+              <th width="40%">Soal</th>
+              <th width="40%">Pilihan Ganda & Jawaban Benar</th>
+              <th width="12%">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for soal in bank_soal %}
+            <tr>
+              <td data-label="No">{{ forloop.counter }}</td>
+              <td data-label="Soal">
+                {{ soal.soal }} ...
+              </td>
+              <td data-label="Pilihan Ganda">
+                <ul>
+                  <li>
+                    A. {{ soal.pilihan_a }}
+                    {% if soal.kunci_jawaban == 'A' %}
+                    <i class="las la-check"></i>
+                    {% endif %}
+                  </li>
+                  <li>
+                    B. {{ soal.pilihan_b }}
+                    {% if soal.kunci_jawaban == 'B' %}
+                    <i class="las la-check"></i>
+                    {% endif %}
+                  </li>
+                  <li>
+                    C. {{ soal.pilihan_c }}
+                    {% if soal.kunci_jawaban == 'C' %}
+                    <i class="las la-check"></i>
+                    {% endif %}
+                  </li>
+                  <li>
+                    D. {{ soal.pilihan_d }}
+                    {% if soal.kunci_jawaban == 'D' %}
+                    <i class="las la-check"></i>
+                    {% endif %}
+                  </li>
+                </ul>
+              </td>
+              <td data-label="Aksi">
+                <div class="table-btn">
+                  <a href="{% url 'edit_soal' soal.id %}" class="edit">
+                    <i class="las la-edit"></i>
+                  </a>
+                  <a href="{% url 'delete_soal' soal.id %}" class="hapus">
+                    <i class="las la-trash"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="3" text-align="left">Jumlah Soal</th>
+              <th data-label="Jumlah Soal">{{ jml_soal }}</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+<!-- AKHIR CONTENT -->
+{% endblock main-content %}

@@ -1,0 +1,51 @@
+{% extends 'adminhsi/base.html' %}
+
+{% load static %}
+
+{% block title %}Admin HSI | Pilih Evaluasi{% endblock title %}
+
+{% block user_fullname %}{{ user.first_name}} {{ user.last_name }}{% endblock %}
+
+{% block main-content %}
+<!-- CONTENT -->
+<div class="main-content">
+  <header>
+    <div class="header-title-wrapper">
+      <label for="menu-toggle">
+        <i class="las la-bars"></i>
+      </label>
+      <div class="header-title">
+        <h1>Daftar Evaluasi & Pertanyaan</h1>
+        <p>Halaman Daftar Evaluasi Harian dan List Pertanyaan</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="card card-pilih-evaluasi">
+        <div class="evaluasi">
+          <div class="card-title">
+            <div class="judul">PILIH EVALUASI HARIAN</div>
+          </div>
+          <div class="card-daftar-evaluasi">
+            {% for evaluasi in list_evaluasi %}
+            <div class="card-body">
+              <div class="kode-evaluasi">{{ evaluasi.kode_evaluasi }}</div>
+              <div class="list-pertanyaan">
+                <button class="btn-list">
+                  <a href="{% url 'soal_evaluasi' evaluasi.id %}">
+                    List Pertanyaan
+                  </a>
+                </button>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<!-- AKHIR CONTENT -->
+{% endblock main-content %}

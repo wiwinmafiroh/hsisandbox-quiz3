@@ -1,0 +1,125 @@
+.card {
+  padding: 1.3rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 0.3rem;
+  border: 1px solid #666;
+}
+
+table th {
+  background: var(--main-accent);
+  font-weight: 600;
+}
+
+table td {
+  font-size: 0.9rem;
+}
+
+table.nilai-peserta td:first-child {
+  text-align: center;
+}
+
+table.nilai-peserta td:nth-child(4) {
+  text-align: right;
+}
+
+table.nilai-peserta td:nth-child(5) {
+  text-align: center;
+}
+
+.card .tambah {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background: var(--btn-tambah);
+  color: #fff;
+}
+
+.table-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.table-btn .edit {
+  margin-right: 0.5rem;
+}
+
+.table-btn .edit,
+.table-btn .hapus {
+  width: 100%;
+  padding: 0.2rem 0;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.table-btn .edit i,
+.table-btn .hapus i {
+  font-size: 1.5rem;
+}
+
+table tbody .edit {
+  border: 1px solid var(--btn-edit);
+  background: var(--btn-edit);
+  color: #2495db;
+}
+
+table tbody .hapus {
+  border: 1px solid #cd0b00;
+  color: #cd0b00;
+}
+
+@media screen and (max-width: 500px) {
+  table thead,
+  table tfoot {
+    display: none;
+  }
+
+  table,
+  table tbody,
+  table tr,
+  table td {
+    display: block;
+    width: 100%;
+  }
+
+  table tr {
+    margin-bottom: 1.2rem;
+  }
+
+  table td:first-child,
+  table td:nth-child(4),
+  table td:nth-child(5) {
+    text-align: left !important;
+  }
+
+  table td {
+    text-align: left;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 0.5rem;
+    font-weight: 600;
+    text-align: left;
+  }
+}

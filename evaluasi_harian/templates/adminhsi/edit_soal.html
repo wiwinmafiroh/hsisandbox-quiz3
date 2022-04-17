@@ -1,0 +1,78 @@
+{% extends 'adminhsi/base.html' %} 
+
+{% load static %} {% block title %}Admin HSI | Edit Soal{% endblock title %} 
+
+{% block user_fullname %}{{ user.first_name}} {{ user.last_name }}{% endblock %}
+
+{% block main-content %}
+<!-- CONTENT -->
+<div class="main-content">
+  <header>
+    <div class="header-title-wrapper">
+      <label for="menu-toggle">
+        <i class="las la-bars"></i>
+      </label>
+      <div class="header-title">
+        <h1>Edit Soal</h1>
+        <p>Halaman Edit Soal Evaluasi Harian HSI</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="card card-edit">
+        <div class="title">Edit Soal</div>
+        <form action="#" method="post">
+          {% csrf_token %}
+          <div class="form-items">
+            <div class="question">
+              <label for="soal" class="label-title">Pertanyaan</label>
+              <textarea name="soal" id="soal" cols="30" rows="10" placeholder="Masukkan Pertanyaan" required>{{ bank_soal.soal }}</textarea>
+            </div>
+
+            <div class="options">
+              <div class="option">
+                <label for="pilihan_a" class="label-title">Pilihan A</label>
+                <input type="text" name="pilihan_a" id="pilihan_a" placeholder="Masukkan Pilihan A" value="{{ bank_soal.pilihan_a }}" required/>
+              </div>
+              <div class="option">
+                <label for="pilihan_b" class="label-title">Pilihan B</label>
+                <input type="text" name="pilihan_b" id="pilihan_b" placeholder="Masukkan Pilihan B" value="{{ bank_soal.pilihan_b }}" required />
+              </div>
+              <div class="option">
+                <label for="pilihan_c" class="label-title">Pilihan C</label>
+                <input type="text" name="pilihan_c" id="pilihan_c" placeholder="Masukkan Pilihan C" value="{{ bank_soal.pilihan_c }}" required />
+              </div>
+              <div class="option">
+                <label for="pilihan_d" class="label-title">Pilihan D</label>
+                <input type="text" name="pilihan_d" id="pilihan_d" placeholder="Masukkan Pilihan D" value="{{ bank_soal.pilihan_d }}" required />
+              </div>
+            </div>
+
+            <div class="answer-key">
+              <label class="label-title">Kunci Jawaban</label>
+              <div class="key">
+                <input type="radio" name="kunci_jawaban" id="kj_A" value="A" required {% if bank_soal.kunci_jawaban == 'A' %}checked{% endif %}/>
+                <label for="kj_A">Pilihan A</label>
+                <input type="radio" name="kunci_jawaban" id="kj_B" value="B" required {% if bank_soal.kunci_jawaban == 'B' %}checked{% endif %} />
+                <label for="kj_B">Pilihan B</label>
+                <input type="radio" name="kunci_jawaban" id="kj_C" value="C" required {% if bank_soal.kunci_jawaban == 'C' %}checked{% endif %} />
+                <label for="kj_C">Pilihan C</label>
+                <input type="radio" name="kunci_jawaban" id="kj_D" value="D" required {% if bank_soal.kunci_jawaban == 'D' %}checked{% endif %} />
+                <label for="kj_D">Pilihan D</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-buttons edit">
+            <button type="submit" class="button-edit">Edit Soal</button>
+            <a class="button-kembali" href="{% url 'soal_evaluasi' id_evaluasi %}">Kembali</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+<!-- AKHIR CONTENT -->
+{% endblock main-content %}

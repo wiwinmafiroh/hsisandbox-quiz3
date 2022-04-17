@@ -1,0 +1,52 @@
+{% extends 'pesertahsi/base.html' %}
+
+{% load static %}
+
+{% block title %}Peserta HSI | Konfirmasi Evaluasi{% endblock title %}
+
+
+
+{% block main-content %}
+<!-- CONTENT -->
+<div class="main-content">
+  <header>
+    <div class="header-title-wrapper">
+      <label for="menu-toggle">
+        <i class="las la-bars"></i>
+      </label>
+      <div class="header-title">
+        <h1>Konfirmasi Evaluasi</h1>
+        <p>Halaman Konfirmasi Evaluasi</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="card card-konfirmasi">
+        {% for message in messages %}
+          {% if message.tags == 'warning' %}
+            <div class="judul">
+              <h3>SI01.{{ kode_evaluasi }}</h3>
+            </div>
+            <div class="items">
+              <p>Jumlah Soal: 2</p>
+              <p>Selalu cek signal<li class="las la-signal" style="color: blue;"></li></p>
+              <p>Pilih salah satu jawaban yang paling tepat!</p>
+            </div>
+            <div class="button">
+              <a href="{% url 'evaluasi_start' %}">Mulai Kerjakan</a>
+              <small>**Mohon pertolongan kepada Allah sebelum mengerjakan.</small>  
+            </div>
+          {% else %}
+            <div class="judul">
+              <h3 style="font-size: 1.7rem;">{{ message }}</h3>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+</div>
+<!-- AKHIR CONTENT -->
+{% endblock main-content %}

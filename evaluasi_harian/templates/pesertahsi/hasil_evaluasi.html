@@ -1,0 +1,95 @@
+{% extends 'pesertahsi/base.html' %}
+
+{% load static %}
+
+{% block title %}Peserta HSI | Hasil Evaluasi{% endblock title %}
+
+{% block main-content %}
+<div class="main-content">
+  <header>
+    <div class="header-title-wrapper">
+      <label for="menu-toggle">
+        <i class="las la-bars"></i>
+      </label>
+      <div class="header-title">
+        <h1>Hasil Evaluasi</h1>
+        <p>Halaman Hasil Evaluasi</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="hasil-evaluasi">
+        <div class="card-total-score">
+          <div class="silsilah-title">SI01.{{ kode_evaluasi }}</div>
+          <div class="total-score">Total Skor: {{ total_skor }}</div>
+        </div>
+        {% for hasil in hasil_evaluasi %}
+        <div class="card-hasil-evaluasi">
+          <div class="card-header">
+            {{ forloop.counter }}. {{ hasil.bank_soal }} ...
+          </div>
+          <div class="card-body">
+            {% if hasil.is_true %}
+            <div>
+              <p class="jawaban-benar">
+              Jawaban Anda:
+              {% if hasil.jawaban == 'A' %}
+                A. {{ hasil.bank_soal.pilihan_a }} <i class="las la-check"></i>
+              {% elif hasil.jawaban == 'B' %}
+                B. {{ hasil.bank_soal.pilihan_b }} <i class="las la-check"></i>
+              {% elif hasil.jawaban == 'C' %}
+                C. {{ hasil.bank_soal.pilihan_c }} <i class="las la-check"></i>
+              {% elif hasil.jawaban == 'D' %}
+                D. {{ hasil.bank_soal.pilihan_d }} <i class="las la-check"></i>
+              {% else %}
+                - Tidak Ada Data -
+              {% endif %}
+              </p>
+            </div>
+            {% else %}
+            <div>
+              <p class="jawaban-salah">
+              Jawaban Anda:
+              {% if hasil.jawaban == 'A' %}
+                A. {{ hasil.bank_soal.pilihan_a }} <i class="las la-times"></i>
+              {% elif hasil.jawaban == 'B' %}
+                B. {{ hasil.bank_soal.pilihan_b }} <i class="las la-times"></i>
+              {% elif hasil.jawaban == 'C' %}
+                C. {{ hasil.bank_soal.pilihan_c }} <i class="las la-times"></i>
+              {% elif hasil.jawaban == 'D' %}
+                D. {{ hasil.bank_soal.pilihan_d }} <i class="las la-times"></i>
+              {% else %}
+                - Tidak Ada Data -
+              {% endif %}
+              <p>
+              <p class="jawaban-benar">
+              Jawaban Benar: 
+              {% if hasil.bank_soal.kunci_jawaban == 'A' %}
+                A. {{ hasil.bank_soal.pilihan_a }} <i class="las la-check"></i>
+              {% elif hasil.bank_soal.kunci_jawaban == 'B' %}
+                B. {{ hasil.bank_soal.pilihan_b }} <i class="las la-check"></i>
+              {% elif hasil.bank_soal.kunci_jawaban == 'C' %}
+                C. {{ hasil.bank_soal.pilihan_c }} <i class="las la-check"></i>
+              {% elif hasil.bank_soal.kunci_jawaban == 'D' %}
+                D. {{ hasil.bank_soal.pilihan_d }} <i class="las la-check"></i>
+              {% else %}
+                - Tidak Ada Data -
+              {% endif %}
+              </p>
+            </div>
+            {% endif %}
+          </div>
+          <div class="card-footer">Score: {{ hasil.skor }}/2</div>
+        </div>
+        {% endfor %}
+        <div class="btn-arsip">
+          <a href="{% url 'arsip' %}">Lihat Seluruh Hasil Evaluasi</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<!-- AKHIR CONTENT -->
+{% endblock main-content %}

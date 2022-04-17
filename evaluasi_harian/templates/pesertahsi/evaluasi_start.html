@@ -1,0 +1,61 @@
+{% extends 'pesertahsi/base.html' %}
+
+{% load static %}
+
+{% block title %}Peserta HSI | Lembar Evaluasi{% endblock title %}
+
+{% block main-content %}
+<!-- CONTENT -->
+<div class="main-content">
+  <header>
+    <div class="header-title-wrapper">
+      <label for="menu-toggle">
+        <i class="las la-bars"></i>
+      </label>
+      <div class="header-title">
+        <h1>Evaluasi Harian</h1>
+        <p>Halaman Evaluasi Harian HSI</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="card">
+        <div class="card-soal">
+          <h3>Soal Evaluasi Harian</h3>
+          <form action="" method="POST">
+            {% csrf_token %}
+            {% for soal in bank_soal_acak %}
+            {% with angka=forloop.counter %}
+            <div class="soal">
+              <input type="hidden" name="id_peserta{{ angka }}" value="{{ id_peserta }}">
+              <input type="hidden" name="id_evaluasi{{ angka }}" value="{{ id_evaluasi }}">
+              <input type="hidden" name="id_soal{{ angka }}" value="{{ soal.id }}">
+              <p>
+                {{ forloop.counter }}. {{ soal.soal }} ...
+              </p>
+              <input type="radio" name="jawaban{{ angka }}" id="pilihan_a" value="A" required/>
+              <label>A. {{ soal.pilihan_a }}</label>
+              <br />
+              <input type="radio" name="jawaban{{ angka }}" id="pilihan_b" value="B" required/>
+              <label>B. {{ soal.pilihan_b }}</label>
+              <br />
+              <input type="radio" name="jawaban{{ angka }}" id="pilihan_c" value="C" required/>
+              <label>C. {{ soal.pilihan_c }}</label>
+              <br />
+              <input type="radio" name="jawaban{{ angka }}" id="pilihan_d" value="D" required/>
+              <label>D. {{ soal.pilihan_d }}</label>
+              <br />
+            </div>
+            {% endwith %}
+            {% endfor %}
+            <button type="submit" class="button-kirim">Kirim Jawaban</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<!-- AKHIR CONTENT -->
+{% endblock main-content %}

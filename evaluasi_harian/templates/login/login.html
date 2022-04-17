@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman Login</title>
+    <link rel="icon" href="{% static 'login/img/logoHSI.png' %}" />
+    <!-- Icons8 -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+  </head>
+  <body>
+    <img src="{% static 'login/img/wave.svg' %}" alt="Img Wave" class="wave">
+    <div class="container">
+      <div class="img">
+        <img src="{% static 'login/img/imgLogin.png' %}" alt="Image Login">
+      </div>
+      <div class="login-container">
+        <div class="title">
+          <img src="{% static 'login/img/logoHSI.png' %}" alt="LogoHSI" class="logoHSI">
+          <h2>Login</h2>
+        </div>
+        {% for message in messages %}
+        <div class="alert">
+          <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="input-element one">
+            <div class="i">
+              <i class="las la-user"></i>
+            </div>
+            <div class="input-username">
+              <h5>NIP</h5>
+              {{ form.username }}
+            </div>
+          </div>
+          <div class="input-element two">
+            <div class="i">
+              <i class="las la-lock"></i>
+            </div>
+            <div class="input-password">
+              <h5>Password</h5>
+              {{ form.password }}
+            </div>
+          </div>
+          <button type="submit" class="btn-login">Login</button>
+        </form>
+        <div class="daftar-login">
+          <div class="admin">
+            <p>Login Admin:</p>
+            <p>NIP: <b>admin</b></p>
+            <p>Password: <b>pwd12345</b></p>
+          </div>
+          <div class="peserta">
+            <p>Login Peserta:</p>
+            <p>NIP: <b>ART001, ART002, ART003,</b></p>
+            <p><b>ART004, ART005</b></p>
+            <p>Password: <b>pwd12345</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'login/js/script.js' %}"></script>
+  </body>
+</html>

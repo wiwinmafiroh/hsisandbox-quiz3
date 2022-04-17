@@ -1,0 +1,153 @@
+{% extends 'adminhsi/base.html' %}
+
+{% load static %}
+
+{% block title %}Admin HSI | Dashboard{% endblock title %}
+
+{% block user_fullname %}{{ user.first_name}} {{ user.last_name }}{% endblock %}
+
+{% block main-content %}
+<!-- CONTENT -->
+<div class="main-content">
+  <header>
+    <div class="header-title-wrapper">
+      <label for="menu-toggle">
+        <i class="las la-bars"></i>
+      </label>
+      <div class="header-title">
+        <h1>Dashboard</h1>
+        <p>Halaman Dashboard Admin HSI</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h3 class="section-header">Informasi HSI</h3>
+      <div class="dashboards">
+        <div class="dashboard">
+          <div class="dashboard-icon">
+            <i class="las la-users"></i>
+          </div>
+          <div class="dashboard-info">
+            <h4>Jumlah Peserta</h4>
+            <h1>{{ jml_peserta }} <small class="text-danger">Peserta</small></h1>
+          </div>
+        </div>
+        <div class="dashboard">
+          <div class="dashboard-icon">
+            <i class="las la-file-alt"></i>
+          </div>
+          <div class="dashboard-info">
+            <h4>Jumlah Evaluasi</h4>
+            <h1>{{ jml_lembar_evaluasi }} <small class="text-danger">Lembar Evaluasi</small></h1>
+          </div>
+        </div>
+        <div class="dashboard">
+          <div class="dashboard-icon">
+            <i class="las la-question"></i>
+          </div>
+          <div class="dashboard-info">
+            <h4>Jumlah Pertanyaan</h4>
+            <h1>{{ jml_bank_soal }} <small class="text-danger">Pertanyaan</small></h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="block-grid">
+        <div class="card card-dashboard">
+          <input type="radio" name="select" id="tap-1" checked />
+          <input type="radio" name="select" id="tap-2" />
+          <input type="radio" name="select" id="tap-3" />
+          <div class="sliders">
+            <label for="tap-1" class="tap tap-1"></label>
+            <label for="tap-2" class="tap tap-2"></label>
+            <label for="tap-3" class="tap tap-3"></label>
+          </div>
+          <div class="card-items">
+            <label for="" class="card-img">
+              <img
+                class="img-1"
+                src="{% static 'adminhsi/img/dashboard/hikmah-harian1.png' %}"
+                alt=""
+              />
+            </label>
+            <div class="card-content content-1">
+              <span>Hikmah Harian</span>
+              <div class="card-title">Cara Rasulullah Dalam Berdoa</div>
+              <div class="card-text">
+                Ya Allah, aku memohon agar dapat mencintai-Mu, dan mencintai
+                orang-orang yang mencintai-Mu, dan mencintai amal yang dapat
+                mendekatkan diriku kepada cinta-Mu." <br />(HR. Tirmidzi
+                3235, shahih)
+              </div>
+              <button class="card-button">
+                <a
+                  href="https://www.instagram.com/p/CbKnNOHBngb/?utm_source=ig_web_copy_link"
+                  target="_blank"
+                  >INSTAGRAM HSI</a
+                >
+              </button>
+            </div>
+          </div>
+          <div class="card-items">
+            <label for="" class="card-img">
+              <img
+                class="img-2"
+                src="{% static 'adminhsi/img/dashboard/hsi-pernik.jpeg' %}"
+                alt=""
+              />
+            </label>
+            <div class="card-content content-2">
+              <span>HSI Pernik</span>
+              <div class="card-title">
+                Reminder Pre Order Mukena Eksklusif HSI
+              </div>
+              <div class="card-text">
+                Bulan Ramadhan insyaaAllah sebentar lagi akan tiba, Segera
+                miliki Mukena Eksklusif HSI yang cocok untuk digunakan
+                beribadah kepada Allah ta'ala.
+              </div>
+              <button class="card-button">
+                <a href="https://pernik.hsi.id/" target="_blank"
+                  >HSI PERNIK</a
+                >
+              </button>
+            </div>
+          </div>
+          <div class="card-items">
+            <label for="" class="card-img">
+              <img
+                class="img-3"
+                src="{% static 'adminhsi/img/dashboard/hikmah-harian2.png' %}"
+                alt=""
+              />
+            </label>
+            <div class="card-content content-3">
+              <span>Hikmah Harian</span>
+              <div class="card-title">Pawang Hujan, Syirik Kah?</div>
+              <div class="card-text">
+                Apabila dia melakukan sebab dan meyakini bahwasanya itulah
+                yang akan menurunkan hujan atau menahan hujan, maka ini
+                termasuk kesyirikan yang besar. Karena tidaklah ada yang
+                mampu menurunkan hujan dan menahan hujan kecuali Allah 'Azza
+                Wa Jalla.
+              </div>
+              <button class="card-button">
+                <a
+                  href="https://www.instagram.com/reel/CbfG1s0BEzh/?utm_source=ig_web_copy_link"
+                  target="_blank"
+                  >INSTAGRAM HSI</a
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<!-- AKHIR CONTENT -->
+{% endblock main-content %}
