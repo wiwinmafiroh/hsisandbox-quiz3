@@ -73,10 +73,14 @@ def lembar_evaluasi(request):
 @login_required(login_url='login')
 @user_passes_test(lambda user: user.groups.filter(name='admin'), login_url='login')
 def add_evaluasi(request):
-  # Generate kode evaluasi
   inisial_kode = 'EH0'
-  kode_terakhir = LembarEvaluasi.objects.last()
-  kode_baru = inisial_kode + str(int(kode_terakhir.kode_evaluasi[2:]) + 1) 
+  
+  # Cek apakah ada lembar evaluasi yang sudah dibuat
+  if LembarEvaluasi.objects.count() > 0:
+    kode_terakhir = LembarEvaluasi.objects.last() # Ambil lembar evaluasi terakhir
+    kode_baru = inisial_kode + str(int(kode_terakhir.kode_evaluasi[2:]) + 1) # Generate kode evaluasi selanjutnya
+  else:
+    kode_baru = inisial_kode + '1' # Generate kode evaluasi baru jika tidak ada lembar evaluasi yang sudah dibuat
   
   # Cek dan ambil data dari form
   if request.method == 'POST':
