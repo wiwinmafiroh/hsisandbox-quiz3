@@ -29,6 +29,8 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['wiwinmfr-hsisandbox-quiz3.up.railway.app', 'wiwinmafiroh-hsisandbox-quiz3.herokuapp.com', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ['https://wiwinmfr-hsisandbox-quiz3.up.railway.app']
+
 
 # Application definition
 
