@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-y=18b&s*&hw#_r45dy))^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['wiwinmafiroh-hsisandbox-quiz3.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['wiwinmfr-hsisandbox-quiz3.up.railway.app', 'wiwinmafiroh-hsisandbox-quiz3.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
